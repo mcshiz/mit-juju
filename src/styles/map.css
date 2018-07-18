@@ -2,4 +2,7 @@
   width: 100vw;
   height: 100vh; }
 
+.picking-location {
+  cursor: crosshair; }
+
 /*# sourceMappingURL=map.css.map */

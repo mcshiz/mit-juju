@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 import logo from './logo.svg';
 import './App.css';
 import './styles/styles.css'
@@ -43,12 +44,16 @@ class App extends Component {
 	onCloseModal = () => {
 		this.setState({ modalOpen: false, modalContent: null });
 	};
+	pickLocation = () => {
+		this.onCloseModal()
+		this.setState({pickingLocation : true})
+	}
 	populateModal = () => {
 		switch(this.state.modalContent) {
 			case 'blog':
-				return <NewBlog/>
+				return <NewBlog pickLocation={this.pickLocation} {...this.state}/>
 			case 'photo':
-				return <NewPhoto/>
+				return <NewPhoto onCloseModal={this.onOpenModal} {...this.state}/>
 		}
 	};
 	render() {
@@ -58,13 +63,13 @@ class App extends Component {
 					<Menu toggleMenu={this.toggleMenu} menuOpen={this.state.menuOpen}/>
 				</header>
 				<div>
-					<Home></Home>
+					<Home {...this.state}></Home>
 				</div>
 				<SlidingPane
 					isOpen={this.state.menuOpen}
 					title='Mit & JuJu'
 					from='left'
-					width="30%"
+					width="50%"
 					ariaHideApp={false}
 					onRequestClose={() => this.setState({menuOpen: false})}>
 					<div>

@@ -5,6 +5,15 @@ import '../styles/photo.css'
 export class NewPhoto extends  Component {
 	constructor(props) {
 		super(props)
+		this.state = {
+			pictures : []
+		}
+		this.onDrop = this.onDrop.bind(this);
+	}
+	onDrop(picture) {
+		this.setState({
+			pictures: this.state.pictures.concat(picture),
+		});
 	}
 	render() {
 		return (
